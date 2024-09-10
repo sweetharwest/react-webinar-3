@@ -76,6 +76,9 @@ class Store {
         }
         if (item.code === code) {
           item.selected = !item.selected;
+          if (item.selected) {
+            item.countSelect = item.countSelect ? ++item.countSelect : 1;
+          }
         }
         return item;
       }),
