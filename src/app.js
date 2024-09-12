@@ -27,9 +27,15 @@ function App({ store }) {
                 onClick={() => store.selectItem(item.code)}
               >
                 <div className="Item-code">{item.code}</div>
-                <div className="Item-title">{item.title} {item.countSelect ? ` | Выделяли ${item.countSelect} раз` : ''}</div>
+                <div className="Item-title">
+                  {item.title}
+                  {item.countSelect ?
+                    ` | Выделяли ${item.countSelect}${([2,3,4].includes(item.countSelect % 10)
+                      && ![12,13,14].includes(item.countSelect % 100)) ? 'раза' : 'раз'}`
+                    : ''}
+                </div>
                 <div className="Item-actions">
-                  <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
+                  <button onClick={() => {event.stopPropagation();store.deleteItem(item.code)}}>Удалить</button>
                 </div>
               </div>
             </div>

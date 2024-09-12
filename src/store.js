@@ -5,9 +5,7 @@ class Store {
   constructor(initState = {}) {
     this.state = initState;
     this.listeners = []; // Слушатели изменений состояния
-    this.maxCode = initState.list.reduce((accumulator, currentValue) => {
-      return (accumulator > currentValue.code ? accumulator : currentValue.code);
-    });
+    this.count = this.state.list.length + 1;
   }
 
   /**
@@ -48,7 +46,7 @@ class Store {
     this.maxCode++;
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: this.maxCode, title: 'Новая запись' }],
+      list: [...this.state.list, { code: this.count++, title: 'Новая запись' }],
     });
   }
 
