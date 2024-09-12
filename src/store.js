@@ -43,7 +43,6 @@ class Store {
    * Добавление новой записи
    */
   addItem() {
-    this.maxCode++;
     this.setState({
       ...this.state,
       list: [...this.state.list, { code: this.count++, title: 'Новая запись' }],
